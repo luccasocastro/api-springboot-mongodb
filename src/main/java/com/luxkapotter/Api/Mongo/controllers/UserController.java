@@ -1,6 +1,7 @@
 package com.luxkapotter.Api.Mongo.controllers;
 
 import com.luxkapotter.Api.Mongo.entities.User;
+import com.luxkapotter.Api.Mongo.entities.UserResponseDTO;
 import com.luxkapotter.Api.Mongo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,8 @@ public class UserController {
     private UserService service;
 
     @GetMapping
-    public ResponseEntity<List<User>> findAll(){
-          List<User> list = service.findAll();
+    public ResponseEntity<List<UserResponseDTO>> findAll(){
+          List<UserResponseDTO> list = service.findAll().stream().map(UserResponseDTO::new).toList();
           return ResponseEntity.ok().body(list);
     }
 }
