@@ -1,6 +1,7 @@
 package com.luxkapotter.Api.Mongo.services;
 
 import com.luxkapotter.Api.Mongo.entities.User;
+import com.luxkapotter.Api.Mongo.entities.UserRequestDTO;
 import com.luxkapotter.Api.Mongo.repositories.UserRepository;
 import com.luxkapotter.Api.Mongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,13 @@ public class UserService {
             throw new ObjectNotFoundException("User doesn't exists!");
         }
         return user;
+    }
+
+    public User insert(User obj){
+        return repository.insert(obj);
+    }
+
+    public User fromDTO(UserRequestDTO objDto){
+        return new User(null, objDto.name(), objDto.email());
     }
 }
