@@ -5,8 +5,6 @@ import com.luxkapotter.Api.Mongo.entities.UserRequestDTO;
 import com.luxkapotter.Api.Mongo.repositories.UserRepository;
 import com.luxkapotter.Api.Mongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
