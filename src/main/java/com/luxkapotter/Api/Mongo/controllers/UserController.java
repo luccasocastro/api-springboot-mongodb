@@ -42,4 +42,12 @@ public class UserController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UserResponseDTO> update(@RequestBody UserRequestDTO objDto, @PathVariable(value = "id") String id){
+        User obj = service.fromDTO(objDto);
+        obj.setId(id);
+        obj = service.update(obj);
+        return ResponseEntity.ok().body(new UserResponseDTO(obj));
+    }
 }
