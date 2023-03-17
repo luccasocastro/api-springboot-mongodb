@@ -14,13 +14,13 @@ public class Post {
     private Date date;
     private String title;
     private String body;
-    private User author;
+    private AuthorResponseDTO author;
 
     public Post(){
 
     }
 
-    public Post(String id, Date date, String title, String body, User author) {
+    public Post(String id, Date date, String title, String body, AuthorResponseDTO author) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -60,11 +60,11 @@ public class Post {
         this.body = body;
     }
 
-    public User getAuthor() {
+    public AuthorResponseDTO getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorResponseDTO author) {
         this.author = author;
     }
 

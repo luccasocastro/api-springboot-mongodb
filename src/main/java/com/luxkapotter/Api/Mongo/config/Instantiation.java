@@ -1,5 +1,6 @@
 package com.luxkapotter.Api.Mongo.config;
 
+import com.luxkapotter.Api.Mongo.entities.AuthorResponseDTO;
 import com.luxkapotter.Api.Mongo.entities.Post;
 import com.luxkapotter.Api.Mongo.entities.User;
 import com.luxkapotter.Api.Mongo.repositories.PostRepository;
@@ -34,10 +35,11 @@ public class Instantiation implements CommandLineRunner {
         User luccas = new User(null, "Luccas", "luscca@mail.com");
         User mary = new User(null, "Mary Joseph", "maryjoseph@mail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", mary);
-        Post post2 = new Post(null, sdf.parse("15/03/2023"), "Estudando MongoDB", "Criando aqui uma API com MongoDB", luccas);
-
         userRepository.saveAll(Arrays.asList(nicolly, luccas, mary));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorResponseDTO(mary));
+        Post post2 = new Post(null, sdf.parse("15/03/2023"), "Estudando MongoDB", "Criando aqui uma API com MongoDB", new AuthorResponseDTO(luccas));
+        
         postRepository.saveAll(Arrays.asList(post1, post2));
 
     }
