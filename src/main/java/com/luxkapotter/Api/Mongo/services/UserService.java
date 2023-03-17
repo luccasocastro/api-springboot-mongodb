@@ -20,12 +20,12 @@ public class UserService {
         return repository.findAll();
     }
 
-    public Optional<User> findById(String id){
+    public User findById(String id){
         Optional<User> user = repository.findById(id);
         if(user.isEmpty()){
             throw new ObjectNotFoundException("User doesn't exists!");
         }
-        return user;
+        return user.get();
     }
 
     public User insert(User obj){
@@ -39,13 +39,13 @@ public class UserService {
 
     public User update(User obj){
         Optional<User> newUser = repository.findById(obj.getId());
-        updateData(newUser, obj);
+        updateData(newUser.get(), obj);
         return repository.save(newUser.get());
     }
 
-    public void updateData(Optional<User> newObj, User obj){
-        newObj.get().setName(obj.getName());
-        newObj.get().setEmail(obj.getEmail());
+    public void updateData(User newObj, User obj){
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
     }
 
     public User fromDTO(UserRequestDTO objDto){

@@ -1,5 +1,6 @@
 package com.luxkapotter.Api.Mongo.controllers;
 
+import com.luxkapotter.Api.Mongo.entities.Post;
 import com.luxkapotter.Api.Mongo.entities.User;
 import com.luxkapotter.Api.Mongo.entities.UserRequestDTO;
 import com.luxkapotter.Api.Mongo.entities.UserResponseDTO;
@@ -25,9 +26,9 @@ public class UserController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Object> findById(@PathVariable(value = "id") String id){
-        Optional<UserResponseDTO> obj = service.findById(id).map(UserResponseDTO::new);
-        return ResponseEntity.ok().body(obj);
+    public ResponseEntity<UserResponseDTO> findById(@PathVariable(value = "id") String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(new UserResponseDTO(obj));
     }
 
     @PostMapping
@@ -49,5 +50,11 @@ public class UserController {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.ok().body(new UserResponseDTO(obj));
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable(value = "id") String id){
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
