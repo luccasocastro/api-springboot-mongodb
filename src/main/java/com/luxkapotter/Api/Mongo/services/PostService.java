@@ -1,7 +1,6 @@
 package com.luxkapotter.Api.Mongo.services;
 
 import com.luxkapotter.Api.Mongo.entities.Post;
-import com.luxkapotter.Api.Mongo.entities.User;
 import com.luxkapotter.Api.Mongo.repositories.PostRepository;
 import com.luxkapotter.Api.Mongo.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

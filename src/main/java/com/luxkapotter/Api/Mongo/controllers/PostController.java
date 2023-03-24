@@ -2,10 +2,7 @@ package com.luxkapotter.Api.Mongo.controllers;
 
 import com.luxkapotter.Api.Mongo.controllers.util.URL;
 import com.luxkapotter.Api.Mongo.entities.Post;
-import com.luxkapotter.Api.Mongo.entities.User;
-import com.luxkapotter.Api.Mongo.entities.UserResponseDTO;
 import com.luxkapotter.Api.Mongo.services.PostService;
-import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
